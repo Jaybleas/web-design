@@ -1,0 +1,574 @@
+/* I had absolutely zero intention of writing this much code but I got carried away, learnt a lot though so that's neat */
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: rgb(255, 255, 255);
+}
+h1 {color: black;
+}
+p {color: black;
+}
+
+
+.image-container {
+width: 110%;
+}
+.banner {
+    width: 100%;
+    height: 200px;
+    place-items: center;
+    
+}
+
+.navbar {
+ width: 80%;
+ height: 50px;
+ margin: 0 auto;
+ display: flex;
+ justify-content:center;
+ text-align: center;
+ gap: 15px;
+
+}
+
+.navbar a {
+    display: inline-block;
+    text-decoration: none;
+    text-align: center;
+    font-size: 24px;
+    padding: 8px;
+    height: 50px;
+    width: 15%;
+    background-color: rgb(214, 212, 108);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+
+}
+
+.contact-details {
+  text-align: center;
+  margin-top: 30px;
+}
+
+.contact-details ul {
+  list-style: none;
+  padding: 0;
+  line-height: 2;
+  font-size: 1.1em;
+}
+
+.contact-details a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.contact-details a:hover {
+  text-decoration: underline;
+}
+
+
+.products-section {
+  max-width: 1100px;
+  margin: 40px auto;
+  padding: 20px;
+  text-align: center;
+}
+
+.products-section h1 {
+  font-size: 2.4em;
+  margin-bottom: 10px;
+}
+
+.products-section p {
+  font-size: 1.1em;
+  color: #555;
+  margin-bottom: 30px;
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 25px;
+}
+
+.product-card {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 15px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.product-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.product-card h3 {
+  margin-top: 15px;
+  font-size: 1.3em;
+}
+
+.product-card p {
+  font-size: 0.95em;
+  color: #555;
+  margin: 8px 0;
+}
+
+.product-card .price {
+  font-weight: bold;
+  font-size: 1.1em;
+  margin: 10px 0;
+  color: #111;
+}
+
+.product-card button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1em;
+  transition: background-color 0.3s;
+}
+
+.product-card button:hover {
+  background-color: #0056b3;
+}
+
+.hero {
+  background-color: #f5f5f5;
+  text-align: center;
+  padding: 60px 20px;
+}
+
+.hero h1 {
+  font-size: 2.8em;
+  margin-bottom: 15px;
+}
+
+.hero p {
+  font-size: 1.2em;
+  margin-bottom: 25px;
+  color: #555;
+}
+
+
+.cta-button {
+  background-color: #007bff;
+  color: white;
+  text-decoration: none;
+  padding: 12px 25px;
+  border-radius: 8px;
+  font-size: 1.1em;
+  transition: background-color 0.3s;
+}
+
+.cta-button:hover {
+  background-color: #0056b3;
+}
+
+.intro {
+  text-align: center;
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+
+.intro h2 {
+  font-size: 2em;
+  margin-bottom: 15px;
+}
+
+.categories {
+  background-color: #fafafa;
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.category-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 25px;
+  margin-top: 30px;
+}
+
+.category-card {
+  background-color: white;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s;
+}
+
+.category-card:hover {
+  transform: translateY(-5px);
+}
+
+.category-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.category-card h3 {
+  padding: 15px;
+  font-size: 1.2em;
+}
+
+.why-us {
+  text-align: center;
+  padding: 40px 20px;
+}
+
+.why-us ul {
+  list-style: none;
+  padding: 0;
+  font-size: 1.1em;
+  line-height: 2;
+}
+
+.footer {
+  background-color: #ffffff;
+  color: white;
+  text-align: center;
+  padding: 15px 0;
+  margin-top: 50px;
+}
+.cart-section {
+  max-width: 1000px;
+  margin: 40px auto;
+  padding: 20px;
+  text-align: center;
+}
+
+.cart-section h1 {
+  font-size: 2.3em;
+  margin-bottom: 25px;
+}
+
+.cart-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 30px;
+  font-size: 1em;
+}
+
+.cart-table th, .cart-table td {
+  border: 1px solid #ddd;
+  padding: 12px;
+  text-align: center;
+}
+
+.cart-table th {
+  background-color: #007bff;
+  color: white;
+}
+
+.cart-table tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.cart-table input[type="number"] {
+  width: 60px;
+  padding: 5px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  text-align: center;
+}
+
+.cart-summary {
+  text-align: right;
+  max-width: 400px;
+  margin-left: auto;
+  font-size: 1.1em;
+}
+
+.cart-summary p {
+  margin: 8px 0;
+}
+
+.cart-summary .total {
+  font-size: 1.2em;
+  margin-top: 10px;
+}
+
+.cart-table .cart-product {
+    display: flex;           
+    align-items: center;     
+    gap: 10px;               
+}
+
+.cart-table .cart-product img {
+    width: 80px;             
+    height: 80px;            
+    object-fit: cover;       
+    border-radius: 5px;      
+}
+
+.checkout-btn {
+  display: inline-block;
+  background-color: #007bff;
+  color: white;
+  padding: 12px 25px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1.1em;
+  margin-top: 15px;
+  transition: background-color 0.3s;
+}
+
+.checkout-btn:hover {
+  background-color: #0056b3;
+}
+
+.visit-section {
+  max-width: 900px;
+  margin: 50px auto;
+  padding: 20px;
+  text-align: center;
+}
+
+.visit-section h2 {
+  font-size: 2em;
+  margin-bottom: 15px;
+}
+
+.visit-section p {
+  font-size: 1.1em;
+  line-height: 1.6;
+  margin-bottom: 25px;
+  color: #555;
+}
+
+.map-container {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.team-section {
+  max-width: 1100px;
+  margin: 50px auto;
+  padding: 20px;
+  text-align: center;
+}
+
+.team-section h2 {
+  font-size: 2em;
+  margin-bottom: 10px;
+}
+
+.team-section p {
+  font-size: 1.1em;
+  margin-bottom: 30px;
+  color: #555;
+}
+
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 25px;
+}
+
+.team-card {
+  background-color: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+  padding: 20px;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.team-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+}
+
+.team-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: contain; 
+  background-color: #f5f5f5; 
+  border-radius: 10px;
+  margin-bottom: 15px;
+}
+
+
+.team-card h3 {
+  font-size: 1.3em;
+  margin-bottom: 5px;
+}
+
+.team-card p {
+  color: #777;
+  margin-bottom: 10px;
+}
+
+.social-links a {
+  color: #007bff;
+  text-decoration: none;
+  margin: 0 5px;
+  font-weight: bold;
+}
+
+.social-links a:hover {
+  text-decoration: underline;
+}
+
+.fade {
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@keyframes fade {
+  from {opacity: .4}
+  to {opacity: 1}
+}
+
+.slideshow-container {
+    max-width: 900px;
+    max-height: 200px; 
+    margin: 0 auto;   
+    position: relative;
+    overflow: hidden;
+}
+
+.slideshow-container img {
+    display: block;   
+    margin: 0 auto;   
+}
+
+.previous, .next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);  
+    padding: 12px;
+    color: white;
+    font-weight: bold;
+    font-size: 24px;
+    background-color: rgba(0,0,0,0.5);
+    border-radius: 50%;
+    user-select: none;
+    transition: background-color 0.3s;
+}
+
+.previous:hover, .next:hover {
+    background-color: rgba(0,0,0,0.8);
+}
+
+.previous {
+    left: 10px;
+}
+.next {
+    right: 10px;
+}
+
+.slideshow-container + div {
+    text-align: center;
+    margin-top: 10px;
+}
+
+.dot {
+    cursor: pointer;
+    height: 12px;
+    width: 12px;
+    margin: 0 4px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.3s;
+}
+
+.active, .dot:hover {
+    background-color: #717171;
+}
+
+.support-team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+    justify-items: center;
+}
+
+.support-team-card {
+    text-align: center;
+    padding: 15px;
+    background-color: #f5f5f5;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.support-team-card img {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 50%;
+    display: block;
+    margin: 0 auto 10px;
+}
+
+.contact-section {
+    max-width: 800px;      
+    margin: 0 auto;        
+    padding: 40px 20px;
+    text-align: center;    
+}
+
+.contact-section .contact-info {
+    margin-bottom: 30px;
+    line-height: 1.6;
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;   
+    gap: 15px;             
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    max-width: 500px;     
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.contact-form button {
+    padding: 12px 25px;
+    border: none;
+    background-color: #0073b1;
+    color: white;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.contact-form button:hover {
+    background-color: #005582;
+}
+
+.center-text {
+  text-align: center;
+}
+/* had to align the text on the produxct page to make it prettier so defined it as .center-text

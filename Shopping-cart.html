@@ -1,0 +1,147 @@
+    <!DOCTYPE html>
+    <html lang="eng">
+    <head> 
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <title> Shopping cart </title>
+
+        <link href="styles.css" rel="stylesheet" type="text/css">
+
+    </head>
+    <body>
+    <div class="image-container">
+        <img class="banner" src="Images/banner.jpeg" alt="banner">
+    </div>
+
+    <div class="navbar">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="about-us.html" class="nav-link">About Us</a>
+        <a href="contact-us.html" class="nav-link">Contact Us</a>
+        <a href="product-page.html" class="nav-link">Products</a>
+        <a href="shopping-cart.html" class="nav-link">Shopping Cart</a>
+        <span class="cart-total" id="cart-total">£0.00</span>
+    </div>
+
+    <section class="cart-section">
+    <h1>Your Shopping Cart</h1>
+<!--added an interactive table w/ images and pricing which live updates the cost-->
+    <table class="cart-table">
+    <thead>
+    <tr>
+    <th>Product</th>
+    <th>Price</th>
+    <th>Quantity</th>
+    <th>Total</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <table class="cart-table">
+    <thead>
+    <tr>
+    <th>Product</th>
+    <th>Price</th>
+    <th>Quantity</th>
+    <th>Total</th>
+    <th>Remove</th>
+    </tr>
+    </thead>
+    <tbody id="cart-items">
+    </tbody>
+    </table>
+
+    <div class="cart-summary">
+      <p><strong>Subtotal:</strong> £<span id="subtotal">129.97</span></p>
+      <p><strong>Delivery:</strong> £<span id="delivery">4.99</span></p>
+      <p class="total"><strong>Total:</strong> £<span id="total">134.96</span></p>
+      <button class="checkout-btn">Proceed to Checkout</button>
+    </div>
+    </section>
+    <footer class="footer">
+    <p>&copy; 2025 Gymify. All rights reserved.</p>
+    </footer>
+
+<!--this java was an absolute pain to figure out I legit needed help-->
+    <script>
+const cartItemsEl = document.getElementById('cart-items');
+const subtotalEl = document.getElementById('subtotal');
+const deliveryEl = document.getElementById('delivery');
+const totalEl = document.getElementById('total');
+
+let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+function renderCart() {
+    cartItemsEl.innerHTML = '';
+    let subtotal = 0;
+
+    cart.forEach((item, index) => {
+        const itemTotal = item.price * item.quantity;
+        subtotal += itemTotal;
+
+        const row = document.createElement('tr');
+        row.innerHTML = `
+            <td class="cart-product">
+                <img src="${item.image}" alt="${item.name}">
+                ${item.name}
+            </td>
+            <td class="price">${item.price.toFixed(2)}</td>
+            <td>
+                <input type="number" min="1" value="${item.quantity}" data-index="${index}" class="quantity">
+            </td>
+            <td class="item-total">${itemTotal.toFixed(2)}</td>
+            <td>
+                <button class="remove-btn" data-index="${index}">Remove</button>
+            </td>
+        `;
+        cartItemsEl.appendChild(row);
+    });
+
+    const delivery = parseFloat(deliveryEl.textContent);
+    subtotalEl.textContent = subtotal.toFixed(2);
+    totalEl.textContent = (subtotal + delivery).toFixed(2);
+
+    addCartEventListeners();
+}
+
+function addCartEventListeners() {
+    document.querySelectorAll('.quantity').forEach(input => {
+        input.addEventListener('change', e => {
+            const index = e.target.dataset.index;
+            cart[index].quantity = parseInt(e.target.value);
+            localStorage.setItem('cart', JSON.stringify(cart));
+            renderCart();
+        });
+    });
+
+    document.querySelectorAll('.remove-btn').forEach(btn => {
+        btn.addEventListener('click', e => {
+            const index = e.target.dataset.index;
+            cart.splice(index, 1);
+            localStorage.setItem('cart', JSON.stringify(cart));
+            renderCart();
+        });
+    });
+}
+
+renderCart();
+</script>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const cartTotalEl = document.getElementById('cart-total');
+
+    function updateCartTotal() {
+        const cart = JSON.parse(localStorage.getItem('cart')) || [];
+        let total = 0;
+        cart.forEach(item => total += item.price * item.quantity);
+        if (cartTotalEl) {
+            cartTotalEl.textContent = `£${total.toFixed(2)}`;
+        }
+    }
+    updateCartTotal();
+    document.addEventListener('cartUpdated', updateCartTotal);
+});
+</script>  
+</body>
+</html>
