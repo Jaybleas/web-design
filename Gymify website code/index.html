@@ -1,0 +1,101 @@
+    <!DOCTYPE html>
+    <html lang="eng">
+    <head> 
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <title> Gymify </title>
+
+        <link href="styles.css" rel="stylesheet" type="text/css">
+
+    </head>
+    <body>
+    <div class="image-container">
+        <img class="banner" src="Images/banner.jpeg" alt="banner">
+    </div>
+
+    <div class="navbar">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="about-us.html" class="nav-link">About Us</a>
+        <a href="contact-us.html" class="nav-link">Contact Us</a>
+        <a href="product-page.html" class="nav-link">Products</a>
+        <a href="shopping-cart.html" class="nav-link">shopping-cart</a>
+        <span class="cart-total" id="cart-total">£0.00</span>
+    </div>
+
+    </body>
+    </html>
+
+     <section class="hero">
+    <h1>Welcome to <span>Gymify</span></h1>
+    <p>Your one-stop shop for high-quality gym gear, equipment, and accessories.</p>
+    <a href="product-page.html" class="cta-button">Shop Now</a>
+    </section>
+
+    <section class="intro">
+    <h2>Built for Strength. Designed for You.</h2>
+    <p>
+      At Gymify, we combine innovation and performance to bring you the best fitness equipment 
+      and accessories. Whether you’re a beginner or a pro, our products are designed to help 
+      you achieve your goals and push your limits.
+    </p>
+    </section>
+
+    <section class="categories">
+    <h2>Shop by Category</h2>
+    <div class="category-grid">
+    <div class="category-card">
+     <a href="category-weights.html">
+    <img src="Images/weights.jpg" alt="Weights">
+    <h3>Weights & Dumbbells</h3>
+     </a>
+    </div>
+    <div class="category-card">
+    <a href="category-mats.html">
+     <img src="Images/mats.jpg" alt="Mats">
+    <h3>Yoga & Mats</h3>
+    </a>
+    </div>
+    <div class="category-card">
+    <a href="category-accessories.html">
+     <img src="Images/accessories.jpg" alt="Accessories">
+    <h3>Accessories</h3>
+    </a>
+    </div>
+    </div>
+    </section>
+    <section class="why-us">
+    <h2>Why Choose Gymify?</h2>
+    <ul>
+      <li> Premium quality gym gear built to last</li>
+      <li> Fast, reliable UK-wide delivery</li>
+      <li> Excellent customer support</li>
+      <li> Trusted by fitness enthusiasts everywhere</li>
+    </ul>
+    </section>
+
+    <footer class="footer">
+    <p>&copy; 2025 Gymify. All rights reserved.</p>
+    </footer>
+
+    <!--more java because I hate myself-->
+ <script>
+document.addEventListener('DOMContentLoaded', () => {
+    const cartTotalEl = document.getElementById('cart-total');
+
+    function updateCartTotal() {
+        const cart = JSON.parse(localStorage.getItem('cart')) || [];
+        let total = 0;
+        cart.forEach(item => total += item.price * item.quantity);
+        if (cartTotalEl) {
+            cartTotalEl.textContent = `£${total.toFixed(2)}`;
+        }
+    }
+    updateCartTotal();
+    document.addEventListener('cartUpdated', updateCartTotal);
+});
+</script>
+    </body>
+    </html>
+
+        

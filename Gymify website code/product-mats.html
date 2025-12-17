@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+    <html lang="eng">
+    <head> 
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <title> Gymify </title>
+
+        <link href="styles.css" rel="stylesheet" type="text/css">
+
+    </head>
+    <body>
+    <div class="image-container">
+        <img class="banner" src="Images/banner.jpeg" alt="banner">
+    </div>
+
+    <div class="navbar">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="about-us.html" class="nav-link">About Us</a>
+        <a href="contact-us.html" class="nav-link">Contact Us</a>
+        <a href="product-page.html" class="nav-link">Products</a>
+        <a href="shopping-cart.html" class="nav-link">shopping-cart</a>
+        <span class="cart-total" id="cart-total">£0.00</span>
+    </div>
+  <section class="product-page">
+    <div class="product-card" data-name="Yoga mat" data-price="29.99" data-image="images/mats.jpg">
+        <img src="images/mats.jpg" alt="Yoga mat" style="width:80%; max-width:400px; display:block; margin:0 auto;">
+        <h2>High Quality yoga mat</h2>
+        <p>High-quality smell proof yoga mats for all ages and sizes</p>
+        <p class="price">£24.99</p>
+        <button class="add-to-cart-btn">Add to Cart</button> <!--I did not preload the audio at first so it wasn't playing-->
+    </div>
+    <audio id="clickSound" src="Audio/yeah-buddy.mp3" preload="auto"></audio>
+</section>
+<footer class="footer">
+    <p>&copy; 2025 Gymify. All rights reserved.</p>
+</footer>
+
+<!--I am legit copy pasting this whole big o'll block after doing it the first time for the belts :)-->
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const addToCartButton = document.querySelector('.add-to-cart-btn');
+    const clickSound = document.getElementById('clickSound');
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+    function updateCartTotal() {
+        const cartTotalEl = document.getElementById('cart-total');
+        let total = 0;
+        cart.forEach(item => total += item.price * item.quantity);
+        if (cartTotalEl) cartTotalEl.textContent = `£${total.toFixed(2)}`;
+    }
+
+    updateCartTotal();
+    addToCartButton.addEventListener('click', () => {
+        const productCard = addToCartButton.parentElement;
+        const product = {
+            name: productCard.dataset.name,
+            price: parseFloat(productCard.dataset.price),
+            image: productCard.dataset.image,
+            quantity: 1
+        };
+
+
+        const existing = cart.find(item => item.name === product.name);
+        if (existing) {
+            existing.quantity += 1;
+        } else {
+            cart.push(product);
+        }
+
+        localStorage.setItem('cart', JSON.stringify(cart));
+        updateCartTotal();
+
+
+        if (clickSound) {
+            clickSound.currentTime = 0;
+            clickSound.play();
+        }
+
+        alert(`${product.name} added to cart!`);
+    });
+});
+</script>
+
+</body>
+</html>
